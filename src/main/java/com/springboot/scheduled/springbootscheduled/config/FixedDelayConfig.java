@@ -9,14 +9,13 @@ import java.time.format.DateTimeFormatter;
 
 @Configuration
 @EnableScheduling
-public class SpringConfig {
+public class FixedDelayConfig {
 
     @Scheduled(fixedDelay = 1000)
     public void scheduleFixedDelayTask() throws InterruptedException {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
-        System.out.println("[Fixed Delay] - " + System.currentTimeMillis() / 1000);
-        System.out.println("[Fixed Delay] - Time now is " + dtf.format(now));
+        System.out.println("[Fixed Delay] - Task starts now at " + dtf.format(LocalDateTime.now()));
         Thread.sleep(3000);
+        System.out.println("[Fixed Delay] - Task is finished at "  + dtf.format(LocalDateTime.now()));
     }
 }
